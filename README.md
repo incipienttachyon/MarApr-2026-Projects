@@ -3,4 +3,4 @@
 - Bazeries Cipher
 - Nihilist Cipher
 - Polybius Cipher
-- MinOS with NASM (32-bit)
+- OS (NASM 64-bit)

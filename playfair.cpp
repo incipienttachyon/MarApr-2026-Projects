@@ -5,20 +5,20 @@ using namespace std;
 
 //===Setting Up The Rules of Encryption/Decryption and 5x5 Matrix===
 string textFormatting (const string& str) {
-    string digraphsRearranged = ""; //Step 1: Convert to capital letters and handling non-alphabetical characters
+    string digraphs_rearranged = ""; //Step 1: Convert to capital letters and handling non-alphabetical characters
     string result = "";
     for (char ch : str) {
         if (isalpha(ch)) {
             ch = toupper(ch);
             if (ch == 'J') ch = 'I'; //Normalise J to I in plaintext
-            digraphsRearranged += ch;
+            digraphs_rearranged += ch;
         }
     }
-    for (size_t i = 0; i < digraphsRearranged.length(); ) { //Following the rule of no repeated letters in a digraph
-        char c1 = digraphsRearranged[i];
+    for (size_t i = 0; i < digraphs_rearranged.length(); ) { //Following the rule of no repeated letters in a digraph
+        char c1 = digraphs_rearranged[i];
         char c2;
-        if (digraphsRearranged.length() > i + 1) 
-            c2 = digraphsRearranged[i + 1];
+        if (digraphs_rearranged.length() > i + 1) 
+            c2 = digraphs_rearranged[i + 1];
         else 
             c2 = 'Z';
         if (c1 == c2) {
@@ -39,20 +39,20 @@ string textFormatting (const string& str) {
 }
 
 string contFormatting(vector<unsigned char>& str) {
-    string digraphsRearranged = "";
+    string digraphs_rearranged = "";
     string result = "";
     for (char ch : str) {
         if (isalpha(ch)) {
             ch = toupper(ch);
             if (ch == 'J') ch = 'I';
-            digraphsRearranged += ch;
+            digraphs_rearranged += ch;
         }
     }
-    for (size_t i = 0; i < digraphsRearranged.length(); ) {
-        char c1 = digraphsRearranged[i];
+    for (size_t i = 0; i < digraphs_rearranged.length(); ) {
+        char c1 = digraphs_rearranged[i];
         char c2;
-        if (digraphsRearranged.length() > i + 1) 
-            c2 = digraphsRearranged[i + 1];
+        if (digraphs_rearranged.length() > i + 1) 
+            c2 = digraphs_rearranged[i + 1];
         else 
             c2 = 'Z';
         if (c1 == c2) {
@@ -199,9 +199,9 @@ void decryptFlow(string& str, string& key) {
     cout << str << endl;
 }
 
-bool checkFileExtension(const string& filename) {
-    vector<string> validFileExtensions = {".txt", ".rtf", ".doc", ".docx", ".csv"};
-    for (const string& file_ext : validFileExtensions) {
+bool checkFileExtension(const string& file_name) {
+    vector<string> valid_file_exts = {".txt", ".rtf", ".doc", ".docx", ".csv"};
+    for (const string& file_ext : valid_file_exts) {
         if (filename.find(file_ext) != string::npos) { //If match found:
             return true;
         }
@@ -209,7 +209,7 @@ bool checkFileExtension(const string& filename) {
     return false;
 }
 
-vector<unsigned char> readf(const string& filename) {
+vector<unsigned char> readf(const string& file_name) {
     ifstream file(filename, ios::binary); //makes sure contents in the file is read or written without translating newline to and from \r\n
     vector<unsigned char> tmp((istreambuf_iterator<char>(file)), istreambuf_iterator<char>()); //stores data from file one by one
     return tmp; 

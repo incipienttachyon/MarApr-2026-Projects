@@ -39,7 +39,7 @@ string polybiusDecryptStr(const string& str) {
     stringstream num_to_str(str);
     string original_letter;
     string decrypted = "";
-    while (num_to_str >> original_letter) { //num_to_str = num_to_str/(2^original_letter) to convert two digits to one letter
+    while (num_to_str >> original_letter) { //reads each two digits as one letter with the space as the delimiter
         int r = original_letter[0] - '1';
         int c = original_letter[1] - '1'; //reverts to original index based on the alphabet_grid
         decrypted += alphabet_grid[r][c];
